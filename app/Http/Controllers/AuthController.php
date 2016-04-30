@@ -13,8 +13,19 @@ class AuthController extends Controller {
     public function postSignUp(Request $request) {
             
         
-        //kill
-        dd('sign up');
+//        //kill
+//        dd('sign up...');
+//        validate
+        $this->validate($request, [
+            
+                'email' => 'required|unique:users|email|max:255',
+                'username' => 'required|unique:users|alpha_dash|max:20',
+                'password' => 'required|min:6',
+            
+        ]);
+        //Dump and Die
+//        dd('All ok');
+        
         
     }
 }

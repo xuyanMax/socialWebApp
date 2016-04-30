@@ -40,7 +40,7 @@ Route::get('/signup',[
 ]);
 
 
-Route::get('/signup',[
+Route::post('/signup',[
 
     'uses' =>'\SocialNetworkApp\Http\Controllers\AuthController@postSignup',
     'as' =>'auth.signup',
