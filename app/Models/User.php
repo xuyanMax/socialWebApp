@@ -1,16 +1,16 @@
 <?php
 
-namespace SocialNetworkApp;
+namespace SocialNetworkApp\Models;
 
-use Illuminate\Auth\Autenticatable;
-use Illuminate\Auth\Eloquent\Model;
-use Illuminat\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User extends Model implement AuthenticatableContract {
+class User extends Model implements AuthenticatableContract {
     
-    use Autenticatable;
+    use Authenticatable;
     /**
-    * The database table usedby the model.
+    * The database table used by the model.
     *
     * @var string
     */
@@ -22,7 +22,14 @@ class User extends Model implement AuthenticatableContract {
     * @var array
     */
     
-    protected $fillable = ['name','email','password']; 
+    protected $fillable = [
+                'username',
+                'first_name',
+                'last_name',
+                'location',
+                'email',
+                'password'
+    ]; 
     
     /**
     * The attributes excluded from the model's JSON form.
@@ -30,7 +37,10 @@ class User extends Model implement AuthenticatableContract {
     * @var array
     */
     
-    protected $hidden = ['password','remember_token'];
+    protected $hidden = [
+            'password',
+            'remember_token'
+    ];
     
 }
 

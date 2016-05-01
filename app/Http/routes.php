@@ -9,6 +9,7 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
+
 */
 
 /*
@@ -20,9 +21,9 @@ Route::get('/', [
     
 ]);
 
-//Route::get('/alert', function() {
-//    return redirect()->route('home')->with('info','You\'ve signed up!');
-//});
+Route::get('/alert', function() {
+    return redirect()->route('home')->with('info','You\'ve signed up!');
+});
 
 
 
@@ -45,8 +46,18 @@ Route::post('/signup',[
     'uses' =>'\SocialNetworkApp\Http\Controllers\AuthController@postSignup',
     'as' =>'auth.signup',
 ]);
+Route::get('/signin',[
+    
+    'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@getSignin',
+    'as' => 'auth.signin',
+]);
 
-?>
+Route::post('/signin',[
+    
+    'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@postSignin',
+    'as' => 'auth.signin',
+]);
+ 
 
 
 

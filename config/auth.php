@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => SocialNetworkApp\User::class,
+            'model' => SocialNetworkApp\Models\User::class,
         ],
 
         // 'users' => [

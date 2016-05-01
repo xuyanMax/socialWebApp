@@ -3,6 +3,8 @@
 
 @section('content')
 
+<h3>Sign up</h3>
+
 <div class="row">
     <div class="col-lg-6">
 {{--      route()--}}
@@ -10,10 +12,12 @@
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label for="email" class="control-label">Your email address</label>
                 <input type="text" name="email" class="form-control" id="email" value="{{ Request::old('email') ?: '' }}">
+                
                 @if( $errors->has('email'))
                 <span class="help-block">{{ $errors->first('email') }}
                 </span>
                 @endif
+                
             </div>
             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                 <label for="username" class="control-label">Choose a username</label>
