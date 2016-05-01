@@ -38,6 +38,7 @@ Route::get('/signup',[
 
     'uses' =>'\SocialNetworkApp\Http\Controllers\AuthController@getSignup',
     'as' =>'auth.signup',
+    'middleware'=>['guest'],
 ]);
 
 
@@ -45,23 +46,28 @@ Route::post('/signup',[
 
     'uses' =>'\SocialNetworkApp\Http\Controllers\AuthController@postSignup',
     'as' =>'auth.signup',
+    'middleware'=>['guest'],
 ]);
 Route::get('/signin',[
     
     'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@getSignin',
     'as' => 'auth.signin',
+    'middleware'=>['guest'],
 ]);
 
 Route::post('/signin',[
     
     'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@postSignin',
     'as' => 'auth.signin',
+    
+    'middleware'=>['guest'],
 ]);
 
 Route::get('/signout',[
     
     'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@getSignout',
     'as' => 'auth.signout',
+    
 ]);
 
 
