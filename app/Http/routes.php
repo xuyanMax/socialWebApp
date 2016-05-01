@@ -71,7 +71,14 @@ Route::get('/signout',[
 ]);
 
 
-
+/*
+**
+*Search
+*/
+Route::get('/search',[
+    'uses' => '\SocialNetworkApp\Http\Controllers\SearchController@getResults',
+    'as' => 'search.results',
+]);
 
 
 
