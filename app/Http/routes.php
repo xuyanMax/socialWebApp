@@ -57,7 +57,14 @@ Route::post('/signin',[
     'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@postSignin',
     'as' => 'auth.signin',
 ]);
- 
+
+Route::get('/signout',[
+    
+    'uses' => '\SocialNetworkApp\Http\Controllers\AuthController@getSignout',
+    'as' => 'auth.signout',
+]);
+
+
 
 
 
