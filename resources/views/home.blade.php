@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h3> Welcome to Vanila</h3>
-<p>The best social network..ever</p>
+<h3> Welcome to Vanilla</h3>
+{{--<p>The best social network..ever</p>--}}
     
 @stop

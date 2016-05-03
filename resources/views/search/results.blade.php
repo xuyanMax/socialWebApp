@@ -13,6 +13,7 @@
             @include('user/partials/userBlock')
         
            @endforeach
+           
         </div>
     </div>
     @endif
