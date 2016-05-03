@@ -81,4 +81,13 @@ Route::get('/search',[
 ]);
 
 
+/*
+**
+*User profile
+*/
 
+Route::get('/user/{username}', [
+    'uses' => '\SocialNetworkApp\Http\Controllers\ProfileController@getProfile',
+    'as' => 'profile.index',
+        
+]);
