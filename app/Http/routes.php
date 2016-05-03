@@ -91,3 +91,15 @@ Route::get('/user/{username}', [
     'as' => 'profile.index',
         
 ]);
+
+Route::get('/profile/edit',[
+    'uses' => '\SocialNetworkApp\Http\Controllers\ProfileController@getEdit',
+    'as' => 'profile.edit',
+    'middleware'=>['auth'],
+]);
+
+Route::post('/profile/edit',[
+    'uses' => '\SocialNetworkApp\Http\Controllers\ProfileController@postEdit',  
+    // a user can only update his or her profile. Thus middleware auth.
+    'middleware'=>['auth'],
+]);
