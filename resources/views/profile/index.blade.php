@@ -11,9 +11,10 @@
             
             
         </div>
+        <!-- Auth::user() returns an instance of the authenticated user... -->
         <div class="col-lg-4 col-lg-offset-3">
             <!-- Friend , Friend request friend_id add user_id as a friend -->
-            
+
             @if (Auth::user()->hasFriendRequestPending($user) )
 	 	        <p>Waiting for {{ $user->getNameOrUsername() }} to accept your request.</p>
 	 	     
@@ -23,6 +24,8 @@
             
             @elseif (Auth::user()->isFriendsWith($user) )
             <a href="#" class="btn btn-primary">You and {{ $user->getNameOrUsername()}} are friends.</a>
+            
+            @else <a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Add as friend</a>
 	 	        
 	 	    @endif
            
@@ -30,7 +33,7 @@
             
             @if(!$user->friends()->count())
                
-               <p>{{ $user->getFirstNameOrUsername() }} has no friends.</p>
+               <p>{{ $user->getFirstNameOrUsername() }}  has no friends.</p>
                 
             @else
             

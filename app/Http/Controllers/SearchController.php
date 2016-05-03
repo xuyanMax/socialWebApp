@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use SocialNetworkApp\Models\User;
 class SearchController extends Controller {
     
+    // $request->user() returns an instance of the authenticated user...
     
     public function getResults(Request $request){
         

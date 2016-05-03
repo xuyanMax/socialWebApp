@@ -113,12 +113,13 @@ class User extends Model implements AuthenticatableContract {
             'accepted'=>true,
         ]);
     }
-    
-    public function isFriendsWith(User $user) {
+    //why $user rather than User $user??????
+    public function isFriendsWith($user) {
         
         return (bool) $this->Friends()->where('id',$user->id)->count();
     }
     
+
     
     
     
