@@ -54,7 +54,7 @@ class AuthController extends Controller {
         ]);
         
         //autenticate
-        
+        // attempt to log a user into your app
                
         if(!Auth::attempt($request->only(['email','password']), $request->has('remember'))) {
             
@@ -68,7 +68,7 @@ class AuthController extends Controller {
             ->with('info','You are now signed in.');
     }
     public function getSignout() {
-        
+        //Logging A User Out Of The Application
         Auth::logout();
         
         return redirect()->route('home');

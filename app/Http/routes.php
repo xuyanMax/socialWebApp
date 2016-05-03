@@ -103,3 +103,16 @@ Route::post('/profile/edit',[
     // a user can only update his or her profile. Thus middleware auth.
     'middleware'=>['auth'],
 ]);
+
+
+/*
+**
+*Friends page
+*/
+
+Route::get('/friends',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\FriendController@getIndex',
+    'as'=>'friends.index',
+    'middleware'=>['auth'],
+]);
