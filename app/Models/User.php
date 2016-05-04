@@ -118,8 +118,12 @@ class User extends Model implements AuthenticatableContract {
         
         return (bool) $this->Friends()->where('id',$user->id)->count();
     }
-    
-
+    // define one to many relations, 'user_id' as foreign key
+    // one user can have many statuses
+    public function statuses() {
+        
+        return $this->hasMany('SocialNetworkApp\Models\Status','user_id'); 
+    }
     
     
     
