@@ -131,7 +131,20 @@ Route::get('/friends/accept/{username}',[
     'middleware'=>['auth'],
 ]);
 
-
+/**
+*
+* Status
+*/
+/**
+* MethodNotAllowedHttpException in RouteCollection.php line 219:
+* if you use get 
+*/
+Route::post('/status',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\StatusController@postStatus',
+    'as'=>'status.post',
+    'middleware'=>['auth'],
+]);
 
 
 
