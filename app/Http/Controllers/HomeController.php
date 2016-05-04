@@ -4,6 +4,7 @@ namespace SocialNetworkApp\Http\Controllers;
 
 
 use Auth;
+use SocialNetworkApp\Models\Status;
 class HomeController extends Controller {
     
     
@@ -11,7 +12,17 @@ class HomeController extends Controller {
         
         if (Auth::check()) {
             
-            return view('timeline.index');    
+            $statuses = Status::where(function($query) {
+                
+                return $query->where('user_id', Auth::user()->id)
+                    ->orWhere('user_id',Auth::user()->friends()->lists('id'));
+            })
+                    ->orderBy('created_at','desc')
+                //divide timeline into discrete pages with render()
+                    ->paginate(10);
+            
+            return view('timeline.index')
+                    ->with('statuses', $statuses);    
         }
         return view('home');
     }
