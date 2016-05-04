@@ -55,6 +55,10 @@ class FriendController extends Controller {
         
     }
     
+    public function getAccept($username) {
+        
+        dd($username);
+    }
     
     
 }

@@ -20,7 +20,7 @@
 	 	     
               
             @elseif (Auth::user()->hasFriendRequestReceived($user) )
-            <a href="#" class="btn btn-primary">Accept friend request</a>
+            <a href="{{ route('friends.accept',['username'=>$user->username ])}}" class="btn btn-primary">Accept friend request</a>
             
             @elseif (Auth::user()->isFriendsWith($user) )
             <a href="#" class="btn btn-primary">You and {{ $user->getNameOrUsername()}} are friends.</a>
