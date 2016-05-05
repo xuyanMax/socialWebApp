@@ -56,12 +56,14 @@ class StatusController extends Controller {
         
         if(!Auth::user()->isFriendsWith($status->user) && Auth::user()->id !== $status->user->id) {
             
-            return redirect()->route('home');
+            return redirect()->route('home')->with('info','You are your best friend.');
         }
+        
         $reply = Status::create([
             
             'body'=>$request->input("reply-{$statusId}"),
         ])->user()->associate(Auth::user());
+        
         $status->replies()->save($reply);
         
         return redirect()->back();

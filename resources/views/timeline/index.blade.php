@@ -47,28 +47,27 @@
                                 <li><a href="#">Like</a></li>
                                 <li>10 likes</li>
                             </ul>
-
-{{--
+        
+                        @foreach($status->replies as $reply)
                             <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" alt="" src="">
+                                <a class="pull-left" href="{{route('profile.index', ['username'=>$reply->user->username]) }}">
+                                    <img class="media-object" alt="{{ $status->user->getNameOrUsername() }}" src="{{ $status->user->getAvatarUrl() }}">
                                 </a>
                                 <div class="media-body">
-                                    <h5 class="media-heading"><a href="#">Billy</a></h5>
-                                    <p>Yes, it is lovely!</p>
+                                    <h5 class="media-heading"><a href="{{route('profile.index', ['username'=>$reply->user->username]) }}">{{$reply->user->getNameOrUsername() }}</a></h5>
+                                    <p>{{ $reply->body}}</p>
                                     <ul class="list-inline">
-                                        <li>8 minutes ago.</li>
+                                        <li>{{$reply->created_at->diffForHumans()}}</li>
                                         <li><a href="#">Like</a></li>
                                         <li>4 likes</li>
                                     </ul>
                                 </div>
                             </div>
---}}
+                        @endforeach
 
                             <form role="form" action="{{ route('status.reply',['statusId' => $status->id])}}" method="post">
                                 <div class="form-group{{ $errors->has("reply-{$status->id}")? ' has-error' : ''}}">
-                                    <textarea name="reply-{{$status->id}}" class="form-control" rows="2" placeholder="Reply to this status">
-                                    </textarea>
+                                    <textarea name="reply-{{$status->id}}" class="form-control" rows="2" placeholder="Reply to this status"></textarea>
                                     @if($errors->has("reply-{$status->id}"))
                                     
                                     <span class="help-block">{{ $errors->first("reply-{$status->id}")}}</span>
