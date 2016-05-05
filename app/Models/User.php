@@ -4,6 +4,8 @@ namespace SocialNetworkApp\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use SocialNetworkApp\Models\Status;
+use SocialNetworkApp\Models\Like;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
 class User extends Model implements AuthenticatableContract {
@@ -123,6 +125,20 @@ class User extends Model implements AuthenticatableContract {
     public function statuses() {
         
         return $this->hasMany('SocialNetworkApp\Models\Status','user_id'); 
+    }
+    
+    public function hasLikedStatus(Status $status) {
+        
+        return (bool) $status ->likes
+            ->where('likeable_id',$status->id)
+            ->where('likeable_type',get_class($status))
+            ->where('user_id',$this->id)
+            ->count();
+    }
+    
+    public function likes() {
+        
+        return $this->hasMany('SocialNetworkApp\Models\Like','user_id');
     }
     
     

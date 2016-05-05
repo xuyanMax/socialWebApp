@@ -24,8 +24,12 @@
                             <p>{{ $status->body }}</p>
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
-                                <li><a href="#">Like</a></li>
-                                <li>10 likes</li>
+{{--
+                                @if($status->user->id !== Auth::user()->id)
+                                    <li><a href="{{ route('status.like',['statusId' => $status->id]) }}">Like</a></li>
+                                    <li>10 likes</li>
+                                @endif
+--}}
                             </ul>
         
                         @foreach($status->replies as $reply)
@@ -38,12 +42,16 @@
                                     <p>{{ $reply->body}}</p>
                                     <ul class="list-inline">
                                         <li>{{$reply->created_at->diffForHumans()}}</li>
-                                        <li><a href="#">Like</a></li>
-                                        <li>4 likes</li>
+                                        
+                                        @if($reply->user->id !== Auth::user()->id)
+                                            <li><a href="{{ route('status.like',['statusId'=>$reply->id])}}">Like</a></li>
+                                            <li>4 likes</li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                         @endforeach
+                        
                         @if($authUserIsFriend || Auth::user()->id === $status->user->id)
                             <form role="form" action="{{ route('status.reply',['statusId' => $status->id])}}" method="post">
                                 <div class="form-group{{ $errors->has("reply-{$status->id}")? ' has-error' : ''}}">
@@ -75,18 +83,19 @@
 	 	     
               
             @elseif (Auth::user()->hasFriendRequestReceived($user) )
-            <a href="{{ route('friends.accept',['username'=>$user->username ])}}" class="btn btn-primary">Accept friend request</a>
+                <a href="{{ route('friends.accept',['username'=>$user->username ])}}" class="btn btn-primary">Accept friend request
+                </a>
             
             @elseif (Auth::user()->isFriendsWith($user) )
-            <a href="#" class="btn btn-primary">You and {{ $user->getNameOrUsername()}} are friends.</a>
+                <a href="#" class="btn btn-primary">You and {{ $user->getNameOrUsername()}} are friends.</a>
             
             <!--if the authenticated user id does equal current user if-->
             @elseif(Auth::user()->id !== $user->id) 
-            <a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Add as friend</a>
+                <a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Add as friend</a>
 	 	        
 	 	    @endif
            
-            <h4> {{  $user->getFirstNameOrUsername() }}'s friends.</h4>
+                <h4> {{  $user->getFirstNameOrUsername() }}'s friends.</h4>
             
             @if(!$user->friends()->count())
                

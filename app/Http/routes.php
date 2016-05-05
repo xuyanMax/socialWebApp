@@ -154,5 +154,12 @@ Route::post('/status/{statusId}/reply',[
 ]);
 
 
+Route::GET('/status/{statusId}/like',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\StatusController@getLike',
+    'as'=>'status.like',
+    'middleware'=>['auth'],
+]);
+
 
 
