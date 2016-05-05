@@ -146,6 +146,13 @@ Route::post('/status',[
     'middleware'=>['auth'],
 ]);
 
+Route::post('/status/{statusId}/reply',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\StatusController@postReply',
+    'as'=>'status.reply',
+    'middleware'=>['auth'],
+]);
+
 
 
 

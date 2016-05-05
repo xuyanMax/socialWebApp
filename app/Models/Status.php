@@ -19,5 +19,16 @@ class Status extends Model {
         
         return $this->belongsTo('SocialNetworkApp\Models\User','user_id');
     }
+    //scope allows us to use query builder
+    //scope-methodName
+    public function scopeNotReply($query) {
+
+        return $query->whereNull('parent_id');
+    }
+    
+    public function replies() {
+        
+        return $this->hasMany('SocialNetworkApp\Models\Status','parent_id');
+    }
     
 }
