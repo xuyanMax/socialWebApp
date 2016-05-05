@@ -15,7 +15,7 @@ class HomeController extends Controller {
             $statuses = Status::where(function($query) {
                 
                 return $query->where('user_id', Auth::user()->id)
-                    ->orWhere('user_id',Auth::user()->friends()->lists('id'));
+                    ->orWhereIn('user_id',Auth::user()->friends()->lists('id'));
             })
                     ->orderBy('created_at','desc')
                 //divide timeline into discrete pages with render()
