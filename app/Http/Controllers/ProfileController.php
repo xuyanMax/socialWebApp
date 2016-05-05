@@ -17,8 +17,13 @@ class ProfileController extends Controller {
             
             abort(404);
         }
+        //show status on your profile
+        $statuses = $user->statuses()->notReply()->get();
+        
         return view ('profile.index')
-            ->with('user',$user);
+            ->with('user',$user)
+            ->with('statuses',$statuses)
+            ->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
     }
     
     public function getEdit() {
@@ -44,7 +49,7 @@ class ProfileController extends Controller {
         ]);
             return redirect()
             ->route('profile.edit')
-            ->with('info','Your profile has been updated.');
+            ->with('info','Your has not posted anything yet.');
     }
     
 }
