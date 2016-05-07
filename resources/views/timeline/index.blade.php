@@ -45,9 +45,10 @@
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
                                 
-                                @if($status->user->id !== Auth::user()->id)
+                                @if(!Auth::user()->hasLikedStatus($status) && $status->user->id !== Auth::user()->id)
                                     <li><a href="{{ route('status.like',['statusId'=>$status->id]) }}">Like</a>
                                     </li>
+                                @else <li><a href="{{ route('status.unlike', ['statusId' => $status->id])}}">Ulike</a></li>
                                     
                                 @endif
                                     <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count() ) }}
@@ -66,9 +67,11 @@
                                     <ul class="list-inline">
                                         <li>{{$reply->created_at->diffForHumans()}}</li>
                                         
-                                        @if($reply->user->id !== Auth::user()->id)
+                                        @if(!Auth::user()->hasLikedStatus($reply) && $reply->user->id !== Auth::user()->id)
                                             <li><a href="{{ route('status.like',['statusId' => $reply->id]) }}">Like</a></li>
                                             
+                                        @elseif(Auth::user()->hasLikedStatus($reply) && $reply->user->id !== Auth::user()->id)
+                                         <li><a href="{{ route('status.unlike', ['statusId' => $reply->id])}}">Ulike</a></li>    
                                         @endif
                                             <li>{{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count() ) }}
                                             </li>

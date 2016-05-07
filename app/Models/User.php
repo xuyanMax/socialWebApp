@@ -134,6 +134,7 @@ class User extends Model implements AuthenticatableContract {
             ->where('likeable_type',get_class($status))
             ->where('user_id',$this->id)
             ->count();
+//        return (bool) $status->likes->where($status->user->id,$this->id)->count();
     }
     
     public function likes() {

@@ -89,12 +89,35 @@ class StatusController extends Controller {
         }
         
         $like = $status->likes()->create([]);
-//        dd($like);
+//        dd($status->likes);
         Auth::user()->likes()->save($like);
         
         return redirect()->back();
         
         
+    }
+    
+    public function getUnLike($statusId) {
+
+        $status = Status::find($statusId);
+        if(!$status) {
+            
+            return redirect()->route('home');
+            
+        }
+        if(!Auth::user()->isFriendsWith($status->user)) {
+            
+            return redirect()->route('home'); 
+            
+        }
+        if(!Auth::user()->hasLikedStatus($status)) {
+            
+            return redirect()->route('home');
+        } 
+        
+        $status->likes()->delete();
+        return redirect()->back();
+            
     }
     
     

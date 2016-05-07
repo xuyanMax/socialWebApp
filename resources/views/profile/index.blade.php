@@ -10,7 +10,7 @@
             <hr>
             
             @if(!$statuses -> count())
-                 <p>You have not updated your status yet.</p>
+                 <span class=""><p> Have not updated status yet...</p></span>
              @else
                 {{--  Loop statuses --------}}
                  @foreach($statuses as $status)
@@ -25,10 +25,9 @@
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
 
-                                @if($status->user->id !== Auth::user()->id)
+                                @if( $status->user->id !== Auth::user()->id)
                                     <li><a href="{{ route('status.like',['statusId' => $status->id]) }}">Like</a>
-                                    </li>
-                                    
+                                    </li>   
                                 @endif
                                     <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count() ) }}
                                     </li>

@@ -161,5 +161,12 @@ Route::GET('/status/{statusId}/like',[
     'middleware'=>['auth'],
 ]);
 
+Route::GET('/status/{statusId}/unlike',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\StatusController@getUnLike',
+    'as'=>'status.unlike',
+    'middleware'=>['auth'],
+]);
+
 
 
