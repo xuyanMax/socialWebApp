@@ -89,6 +89,7 @@ class StatusController extends Controller {
         }
         
         $like = $status->likes()->create([]);
+//        dd($like);
         Auth::user()->likes()->save($like);
         
         return redirect()->back();
