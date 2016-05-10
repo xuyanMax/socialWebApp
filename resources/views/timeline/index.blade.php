@@ -48,7 +48,7 @@
                                 @if(!Auth::user()->hasLikedStatus($status) && $status->user->id !== Auth::user()->id)
                                     <li><a href="{{ route('status.like',['statusId'=>$status->id]) }}">Like</a>
                                     </li>
-                                @else <li><a href="{{ route('status.unlike', ['statusId' => $status->id])}}">Ulike</a></li>
+                                @elseif(Auth::user()->hasLikedStatus($status) && $status->user->id !== Auth::user()->id) <li><a href="{{ route('status.unlike', ['statusId' => $status->id])}}">Ulike</a></li>
                                     
                                 @endif
                                     <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count() ) }}

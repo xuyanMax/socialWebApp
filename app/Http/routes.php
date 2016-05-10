@@ -168,5 +168,11 @@ Route::GET('/status/{statusId}/unlike',[
     'middleware'=>['auth'],
 ]);
 
+Route::GET('/status/{statusId}/image/{fileName}',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\StatusController@getImage',
+    'as'=>'status.image',
+    'middleware'=>['auth'],
+]);
 
 

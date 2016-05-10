@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default" role="navigation">
         <div class="container">
                 <div class="navbar-header">
-                        <a href="{{ route('home')}}" class="navbar-brand">Vanila</a>
+                        <a href="{{ route('home')}}" class="navbar-brand">Home</a>
                 </div> 
                 <div class="collapse navbar-collapse">
                       @if(Auth::check())
                         <ul class="nav navbar-nav">
-                                <li><a href="{{ route('home')}}">Timeline</a></li>
+                                <li><a href="{{ route('home')}}">Moments</a></li>
                                 <li><a href="{{ route('friends.index') }}">Friends</a></li>
                         </ul>
                        

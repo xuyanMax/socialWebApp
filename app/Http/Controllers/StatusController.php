@@ -24,10 +24,16 @@ class StatusController extends Controller {
             'body'=>$request->input('status'),
             
         ]);
+        
+        
         return redirect()
                 ->route('home')
                 ->with('info','Status posted.');
     }
+    public function getImage($fileName) {
+
+    }
+    
     
     public function postReply(Request $request, $statusId ) {
         
