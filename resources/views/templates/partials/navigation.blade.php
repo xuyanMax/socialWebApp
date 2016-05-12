@@ -1,8 +1,14 @@
 <nav class="navbar navbar-default" role="navigation">
         <div class="container">
-                <div class="navbar-header">
-                        <a href="{{ route('home')}}" class="navbar-brand">Home</a>
+                <div class="navbar-brand ">
+                      
+                       <a href="{{ route('home')}}"><span class="glyphicon glyphicon-home         
+                aria-hidden ="true></span>Home</a>
+                
+                
                 </div> 
+                 
+                
                 <div class="collapse navbar-collapse">
                       @if(Auth::check())
                         <ul class="nav navbar-nav">
