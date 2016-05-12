@@ -13,8 +13,9 @@
             @if($user->location || $user->id_number)
 
 
-                <p>{{ $user->id_number }}</p>
-                <p>{{ $user->location }}</p>
+                <p class="navbar-text">{{ $user->id_number }}</p>
+            
+                <p class="navbar-text">{{ $user->location }}</p>
 
             @endif
        @endif

@@ -21,12 +21,20 @@
                                         <input type="text" name="query" class="form-control"
                                         placeholder="Find people"/>
                                 </div>
-                                <button type="submit" class="btn btn-default">Search</button>
+                                
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                                
+                                
+                                
                         </form>
                       @endif
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::check())
-                                <li><a href="{{ route('profile.index',['username'=>Auth::user()->username])}}">{{ Auth::user()-> getNameOrUsername() }}</a></li>
+                                <li><a href="{{ route('profile.index',['username'=>Auth::user()->username])}}">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"> {{ Auth::user()-> getNameOrUsername() }}
+                                </span></a></li>
                                 <li><a href="{{ route('profile.edit')}}">Update profile</a></li>
                                 <li><a href="{{ route('auth.signout')}}">Sign out</a></li>
                             @else
