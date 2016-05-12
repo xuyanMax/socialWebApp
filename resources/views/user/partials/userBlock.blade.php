@@ -9,9 +9,14 @@
         </a>
         </h4>
         
-        @if($user->location)
-            <p>{{ $user->location }}</p>
+        @if($user->location || $user->id_number)
+           
+           
+        <p>{{ $user->id_number }}</p>
+        <p>{{ $user->location }}</p>
+       
         @endif
+       
         
     </div>
 </div>

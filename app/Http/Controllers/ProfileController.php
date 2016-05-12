@@ -36,6 +36,7 @@ class ProfileController extends Controller {
             'first_name'=>'alpha|max:50',
             'last_name'=>'alpha|max:50',
             'location'=>'max:20',
+            'id_number'=>'digits:7|required',
         ]);
         
 //        dd('All ok');
@@ -46,10 +47,12 @@ class ProfileController extends Controller {
             'first_name'=>$request->input('first_name'),
             'last_name'=>$request->input('last_name'),
             'location'=>$request->input('location'),
+            'id_number'=>$request->input('id_number'),
+//            'remember_token'=
         ]);
             return redirect()
-            ->route('profile.edit')
-            ->with('info','Your has not posted anything yet.');
+            ->route('home')
+            ->with('info','Your has updated your profile.');
     }
     
 }

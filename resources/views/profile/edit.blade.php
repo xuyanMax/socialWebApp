@@ -25,16 +25,29 @@
 							</span>
 							@endif
 						</div>
-					</div>
+					</div>	
 				</div>
-				<div class="form-group{{ $errors->has('location')? ' has-error' : ''}}">
-					<label for="location" class="control-label">Location</label>
-					<input type="text" name="location" class="form-control" id="location" value="{{ Request::old('location') ?:  Auth::user()->location}}">
-					@if($errors->has('location'))
-							<span class="help-block">{{ $errors->first('location') }}
+							
+        			
+					<div class="form-group{{ $errors->has('id_number') ? ' has-error' : ''}}">
+							<label for="id_number" class="control-label">ID NUMBER</label>
+							<input type="text" name="id_number" class="form-control" id="id_number" value="{{ Request::old('id_number') ?:  Auth::user()->id_number}}">
+							@if($errors->has('id_number'))
+							<span class="help-block">{{ $errors->first('id_number') }}
 							</span>
-                    @endif
-				</div>
+							@endif
+                    </div>
+                 
+                
+                    <div class="form-group{{ $errors->has('location')? ' has-error' : ''}}">
+                        <label for="location" class="control-label">Location</label>
+                        <input type="text" name="location" class="form-control" id="location" value="{{ Request::old('location') ?:  Auth::user()->location}}">
+                        @if($errors->has('location'))
+                                <span class="help-block">{{ $errors->first('location') }}
+                                </span>
+                        @endif
+                    </div>
+				
 				<div class="form-group">
 					<button type="submit" class="btn btn-default">Update</button>
 				</div>

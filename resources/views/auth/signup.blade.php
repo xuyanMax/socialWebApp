@@ -35,6 +35,16 @@
                 </span>
                 @endif
             </div>
+            
+            <div class="form-group{{ $errors->has('password_check') ? ' has-error' : '' }}">
+                <label for="password_check" class="control-label">Password again</label>
+                <input type="password" name="password_check" class="form-control" id="password_check" placeholder="Password confirm">
+                @if($errors->has('password_check') )
+                <span class="help-block">{{ $errors->first('password_check') }}
+                </span>
+                @endif
+            </div>
+            
             <div class="form-group">
                 <button type="submit" class="btn btn-default">Sign up</button>
             </div> 

@@ -15,9 +15,13 @@ class AuthController extends Controller {
     public function postSignup(Request $request) {
             
         
-//        //kill
-//        dd('sign up...');
-//        validate
+        if ($request['password']!==$request['password_check']) {
+                
+            return redirect()
+                    ->back()
+                    ->with('info','The passwords entered do not match.');
+        }
+        
         $this->validate($request, [
             
                 'email' => 'required|unique:users|email|max:255',
