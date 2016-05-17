@@ -7,9 +7,9 @@
         <div class="col-lg-6">
            
            
-            <form role="form" action="{{ route('status.post') }}" method="post">
+            <form role="form" action="{{ route('status.post') }}" method="post" >
                 <div class="form-group {{ $errors->has('status')? ' has-error' : ''}}">
-                    <textarea placeholder="What's on your mind {{Auth::user()->username}}?" name="status" class="form-control" rows="2"></textarea>
+                    <textarea placeholder="What's on your mind {{Auth::user()->username}}?" name="status" class="form-control" rows="6" style="margin-top:120px"></textarea >
                     @if($errors->has('status'))
                     
                    <span class="help-block"> {{ $errors->first('status')}}</span>

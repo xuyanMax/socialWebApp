@@ -19,7 +19,7 @@ class HomeController extends Controller {
             })
                     ->orderBy('created_at','desc')
                 //divide timeline into discrete pages with render()
-                    ->paginate(10);
+                    ->paginate(5);
             
             return view('timeline.index')
                     ->with('statuses', $statuses);    

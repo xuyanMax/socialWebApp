@@ -2,7 +2,7 @@
 
 
 @section('content')   
-   <div class="row">
+   <div class="row" style="margin-top:100px">
         <div class="col-lg-5">
             <!-- User information and status -->
         
@@ -90,7 +90,12 @@
                 </a>
             
             @elseif (Auth::user()->isFriendsWith($user) )
-                <a href="#" class="btn btn-primary">You and {{ $user->getNameOrUsername()}} are friends.</a>
+                <p>You and {{ $user->getNameOrUsername()}} are friends</p> 
+                
+                <form action="{{ route('friends.delete',['username'=>$user->username ] )}}" method="post">
+                    <input type="submit" value="Delete friend" class="btn btn-primary">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                </form>
             
             <!--if the authenticated user id does equal current user if-->
             @elseif(Auth::user()->id !== $user->id) 

@@ -131,6 +131,12 @@ Route::get('/friends/accept/{username}',[
     'middleware'=>['auth'],
 ]);
 
+Route::post('/friends/delete/{username}',[
+    
+    'uses'=>'\SocialNetworkApp\Http\Controllers\FriendController@postDelete',
+    'as'=>'friends.delete',
+    'middleware'=>['auth'],
+]);
 /**
 *
 * Status

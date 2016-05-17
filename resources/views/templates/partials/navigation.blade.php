@@ -1,25 +1,23 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style= "margin-bottom:2cm">
         <div class="container">
-                <div class="navbar-brand ">
-                      
-                       <a href="{{ route('home')}}"><span class="glyphicon glyphicon-home         
-                aria-hidden ="true></span>Home</a>
-                
-                
-                </div> 
-                 
-                
+               <div class="navbar-brand">
+                  <a href="{{ route('home')}}">XiPuBook</a>
+                   
+               </div>
+                             
                 <div class="collapse navbar-collapse">
                       @if(Auth::check())
                         <ul class="nav navbar-nav">
+                               <li><a href="{{ route('home')}}"><span class="glyphicon glyphicon-home         
+                aria-hidden ="true></span>Home</a></li>
                                 <li><a href="{{ route('home')}}">Moments</a></li>
                                 <li><a href="{{ route('friends.index') }}">Friends</a></li>
                         </ul>
                        
                         <form action="{{ route('search.results') }}" role="search" class="navbar-form navbar-left">
                                 <div class="form-group">
-                                        <input type="text" name="query" class="form-control"
-                                        placeholder="Find people"/>
+                                        <input type="text" name="query" class="form-control" width="150px"
+                                        placeholder="Search people/ an ISBN"/>
                                 </div>
                                 
                                 <button type="submit">
