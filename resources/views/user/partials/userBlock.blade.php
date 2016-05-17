@@ -11,11 +11,13 @@
     {{-- If authenticated user is not friend with user, does not show his/her personal info.  --}}
         @if(Auth::user()->isFriendsWith($user))
             @if($user->location || $user->id_number)
-
-
-                <p class="navbar-text">{{ $user->id_number }}</p>
+                
+                <div class="">
+                    <p class="navbar-text">{{ $user->id_number }}</p>
             
                 <p class="navbar-text">{{ $user->location }}</p>
+                </div>
+                
 
             @endif
        @endif
